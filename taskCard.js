@@ -8,6 +8,8 @@ export function TaskCard(task, completeTask, removeTask) {
   text.textContent = `${task.description} ${task.completed}`;
   li.appendChild(text);
 
+  li.classList.add("list-group-item");
+
   li.appendChild(btnComplete(completeTask, task));
   li.appendChild(btnDelete(removeTask, task));
 
