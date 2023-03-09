@@ -1,3 +1,4 @@
+import { baseButton } from "./baseButton";
 export function TaskCard(task, completeTask, removeTask) {
   let li = document.createElement("li");
   li.innerText = `${task.name} ${task.completed}`;
@@ -10,17 +11,13 @@ export function TaskCard(task, completeTask, removeTask) {
 }
 
 function btnComplete(completeTask, task) {
-  let btnComplete = document.createElement("button");
-  btnComplete.innerText = "Complete";
-  btnComplete.addEventListener("click", () => completeTask(task));
+  let btnComplete = baseButton("Complete", () => completeTask(task));
 
   return btnComplete;
 }
 
 function btnDelete(removeTask, task) {
-  let btnDelete = document.createElement("button");
-  btnDelete.innerText = "Remove";
-  btnDelete.addEventListener("click", () => removeTask(task));
+  let btnDelete = baseButton("Delete", () => removeTask(task));
 
   return btnDelete;
 }
