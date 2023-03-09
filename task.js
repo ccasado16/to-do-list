@@ -1,5 +1,5 @@
-function Task(name) {
-  this.name = name;
+function Task(description) {
+  this.description = description;
   this.completed = false;
 }
 

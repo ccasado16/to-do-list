@@ -6,15 +6,15 @@ const btnAddTask = document.getElementById("btn-add-task");
 const taskList = document.getElementById("task-list");
 
 const taskArray = [
-  { name: "Task 1", completed: false },
-  { name: "Task 2", completed: false },
-  { name: "Task 3", completed: false },
+  { description: "Task 1", completed: false },
+  { description: "Task 2", completed: false },
+  { description: "Task 3", completed: false },
 ];
 
 const addTask = () => {
   if (!taskInput.value) throw Error("No Task Provided");
 
-  if (taskArray.map((task) => task.name).includes(taskInput.value))
+  if (taskArray.map((task) => task.description).includes(taskInput.value))
     throw Error("Task Already Exists");
 
   let task = new Task(taskInput.value);
