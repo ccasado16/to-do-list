@@ -14,7 +14,8 @@ const taskArray = [
 const addTask = () => {
   if (!taskInput.value) throw Error("No Task Provided");
 
-  if (taskArray.includes(taskInput.value)) throw Error("Task Already Exists");
+  if (taskArray.map((task) => task.name).includes(taskInput.value))
+    throw Error("Task Already Exists");
 
   let task = new Task(taskInput.value);
   taskArray.push(task);
@@ -47,3 +48,4 @@ const renderTasks = () => {
 btnAddTask.addEventListener("click", addTask);
 
 renderTasks();
+
