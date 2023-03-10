@@ -46,7 +46,7 @@ const completeTask = (task) => {
   task.completed = true;
 
   // move to completedTasksArray
-  completedTasksArray.push(taskArray.splice(index, 1)[0]);
+  completedTasksArray.unshift(taskArray.splice(index, 1)[0]);
 
   renderTasks();
 };
