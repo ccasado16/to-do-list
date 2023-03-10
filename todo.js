@@ -4,12 +4,15 @@ import { TaskCard } from "./taskCard.js";
 const taskInput = document.getElementById("task-input");
 const btnAddTask = document.getElementById("btn-add-task");
 const taskList = document.getElementById("task-list");
+const completedTasksList = document.getElementById("completed-tasks-list");
 
 const taskArray = [
   { description: "Task 1", completed: false },
   { description: "Task 2", completed: false },
   { description: "Task 3", completed: false },
 ];
+
+const completedTasksArray = [{ description: "Task 4", completed: true }];
 
 const addTask = () => {
   if (!taskInput.value) throw Error("No Task Provided");
@@ -33,19 +36,28 @@ const removeTask = (task) => {
 
 const completeTask = (task) => {
   let index = taskArray.indexOf(task);
-  taskArray[index].completed = true;
+  task.completed = true;
+
+  // move to completedTasksArray
+  completedTasksArray.push(taskArray.splice(index, 1)[0]);
+
   renderTasks();
 };
 
 const renderTasks = () => {
-  console.log(taskArray);
+  console.log("taskArray-->", taskArray);
   taskList.innerHTML = "";
   taskArray.forEach((task) => {
     taskList.appendChild(TaskCard(task, removeTask, completeTask));
+  });
+
+  console.log("completedTasksArray-->", completedTasksArray);
+  completedTasksList.innerHTML = "";
+  completedTasksArray.forEach((task) => {
+    completedTasksList.appendChild(TaskCard(task));
   });
 };
 
 btnAddTask.addEventListener("click", addTask);
 
 renderTasks();
-
