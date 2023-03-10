@@ -1,6 +1,6 @@
 import { baseButton } from "./baseButton";
 
-export function TaskCard(task, completeTask, removeTask) {
+export function TaskCard(task, removeTask, completeTask) {
   let li = document.createElement("li");
   li.classList.add("task-card");
 
@@ -10,7 +10,10 @@ export function TaskCard(task, completeTask, removeTask) {
 
   let actions = document.createElement("div");
   actions.classList.add("actions");
-  actions.appendChild(btnComplete(completeTask, task));
+
+  if (!task.completed) {
+    actions.appendChild(btnComplete(completeTask, task));
+  }
   actions.appendChild(btnDelete(removeTask, task));
 
   li.classList.add("list-group-item");
