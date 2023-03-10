@@ -5,7 +5,7 @@ export function TaskCard(task, removeTask, completeTask) {
   li.classList.add("task-card");
 
   let text = document.createElement("span");
-  text.textContent = `${task.description} ${task.completed}`;
+  text.textContent = `${task.description}`;
   li.appendChild(text);
 
   let actions = document.createElement("div");
