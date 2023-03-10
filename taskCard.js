@@ -8,26 +8,28 @@ export function TaskCard(task, completeTask, removeTask) {
   text.textContent = `${task.description} ${task.completed}`;
   li.appendChild(text);
 
+  let actions = document.createElement("div");
+  actions.classList.add("actions");
+  actions.appendChild(btnComplete(completeTask, task));
+  actions.appendChild(btnDelete(removeTask, task));
+
   li.classList.add("list-group-item");
-
-  li.appendChild(btnComplete(completeTask, task));
-  li.appendChild(btnDelete(removeTask, task));
-
+  li.appendChild(actions);
   return li;
 }
 
 function btnComplete(completeTask, task) {
-  let btnComplete = baseButton("Complete", () => completeTask(task));
+  let btnComplete = baseButton("&#10004;", () => completeTask(task));
 
-  btnComplete.classList.add("btn-complete");
+  btnComplete.classList.add("btn-outline-success");
 
   return btnComplete;
 }
 
 function btnDelete(removeTask, task) {
-  let btnDelete = baseButton("Delete", () => removeTask(task));
+  let btnDelete = baseButton("&#10006;", () => removeTask(task));
 
-  btnDelete.classList.add("btn-delete");
+  btnDelete.classList.add("btn-outline-danger");
 
   return btnDelete;
 }
