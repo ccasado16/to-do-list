@@ -1,23 +1,45 @@
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.container,
+.container .app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.app {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.container .app {
+  width: 50%;
 }
 
-.task-card .actions {
-    float: right;
+.container .app h1,
+h2 {
+  font-family: "Rampart One", cursive;
+  margin: 0;
+}
+
+.container .app .title img {
+  width: 5em;
+}
+
+.container .app .title {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.task-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-card span {
+  font-family: "Shantell Sans", cursive;
 }
 
 .task-card .actions button {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
 .task-card .actions button:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }
