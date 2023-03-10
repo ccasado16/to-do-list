@@ -26,8 +26,10 @@ h2 {
   justify-content: center;
 }
 
-.task-card .actions {
-  float: right;
+.task-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .task-card span {
