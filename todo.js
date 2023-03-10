@@ -66,5 +66,8 @@ const renderTasks = () => {
 };
 
 btnAddTask.addEventListener("click", addTask);
+taskInput.addEventListener("keyup", (e) => {
+  if (e.key === "Enter") addTask();
+});
 
 renderTasks();
