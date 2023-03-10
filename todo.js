@@ -41,7 +41,7 @@ const renderTasks = () => {
   console.log(taskArray);
   taskList.innerHTML = "";
   taskArray.forEach((task) => {
-    taskList.appendChild(TaskCard(task, completeTask, removeTask));
+    taskList.appendChild(TaskCard(task, removeTask, completeTask));
   });
 };
 
