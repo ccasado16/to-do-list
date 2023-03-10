@@ -29,8 +29,15 @@ const addTask = () => {
 };
 
 const removeTask = (task) => {
-  let index = taskArray.indexOf(task);
-  taskArray.splice(index, 1);
+  // Search for the task in the taskArray or completedTasksArray based on the task.completed value
+  let index = !task.completed
+    ? taskArray.indexOf(task)
+    : completedTasksArray.indexOf(task);
+
+  if (!task.completed) taskArray.splice(index, 1);
+
+  if (task.completed) completedTasksArray.splice(index, 1);
+
   renderTasks();
 };
 
@@ -54,7 +61,7 @@ const renderTasks = () => {
   console.log("completedTasksArray-->", completedTasksArray);
   completedTasksList.innerHTML = "";
   completedTasksArray.forEach((task) => {
-    completedTasksList.appendChild(TaskCard(task));
+    completedTasksList.appendChild(TaskCard(task, removeTask, null));
   });
 };
 
