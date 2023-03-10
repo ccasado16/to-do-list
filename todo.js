@@ -16,11 +16,14 @@ const completedTasksArray = [{ description: "Task 4", completed: true }];
 
 const addTask = () => {
   if (!taskInput.value) {
+    window.alert("No task provided");
     throw Error("No Task Provided");
   }
 
-  if (taskArray.map((task) => task.description).includes(taskInput.value))
+  if (taskArray.map((task) => task.description).includes(taskInput.value)) {
+    window.alert("Task already exists");
     throw Error("Task Already Exists");
+  }
 
   let task = new Task(taskInput.value);
   taskArray.push(task);
