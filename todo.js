@@ -1,5 +1,5 @@
-import { Task } from "./task.js";
-import { TaskCard } from "./taskCard.js";
+import { Task } from "./components/task.js";
+import { TaskCard } from "./components/taskCard.js";
 
 const taskInput = document.getElementById("task-input");
 const btnAddTask = document.getElementById("btn-add-task");
@@ -15,7 +15,9 @@ const taskArray = [
 const completedTasksArray = [{ description: "Task 4", completed: true }];
 
 const addTask = () => {
-  if (!taskInput.value) throw Error("No Task Provided");
+  if (!taskInput.value) {
+    throw Error("No Task Provided");
+  }
 
   if (taskArray.map((task) => task.description).includes(taskInput.value))
     throw Error("Task Already Exists");
