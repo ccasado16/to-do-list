@@ -2,12 +2,74 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+
+    <!-- FIXME: Change favicon size -->
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+
+    <title>To-Do</title>
+
+    <!-- bootstrap -->
+    <link
+      rel="stylesheet"
+      href="/node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+
+    <!-- bootstrap icons -->
+    <link
+      rel="stylesheet"
+      href="/node_modules/bootstrap-icons/font/bootstrap-icons.css"
+    />
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Shantell+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- custom stylesheet -->
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/main.js"></script>
+    <div class="container">
+      <div class="app">
+        <div class="title">
+          <img src="/logo.svg" alt="" />
+          <h1>To-Do List</h1>
+        </div>
+
+        <div class="form-floating mb-3 w-100">
+          <input
+            class="form-control w-100"
+            id="task-input"
+            placeholder="Add Task"
+          />
+          <label for="task-input">Add Task</label>
+        </div>
+
+        <button
+          id="btn-add-task"
+          type="button"
+          class="btn btn-primary btn-lg mb-3"
+        >
+          Add Task
+        </button>
+
+        <ul id="task-list" class="list-group w-100"></ul>
+
+        <h2 id="completed-tasks-title" class="mt-4 mb-3" hidden="true">
+          Completed tasks
+        </h2>
+        <ul id="completed-tasks-list" class="list-group w-100"></ul>
+      </div>
+    </div>
+    <script type="module" src="todo.js"></script>
   </body>
 </html>
