@@ -30,6 +30,10 @@ h2 {
   font-family: "Shantell Sans", cursive;
 }
 
+.container .app #btn-add-task {
+  font-family: "Shantell Sans", cursive;
+}
+
 .task-card {
   display: flex;
   justify-content: space-between;
