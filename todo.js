@@ -5,6 +5,7 @@ const taskInput = document.getElementById("task-input");
 const btnAddTask = document.getElementById("btn-add-task");
 const taskList = document.getElementById("task-list");
 const completedTasksList = document.getElementById("completed-tasks-list");
+const completedTitle = document.getElementById("completed-tasks-title");
 
 const taskArray = JSON.parse(localStorage.getItem("tasks")) || [];
 
@@ -72,6 +73,10 @@ const renderTasks = () => {
   });
 
   console.log("completedTasksArray-->", completedTasksArray);
+
+  if (completedTasksArray.length > 0) completedTitle.removeAttribute("hidden");
+  else completedTitle.setAttribute("hidden", true);
+
   completedTasksList.innerHTML = "";
   completedTasksArray.forEach((task) => {
     completedTasksList.appendChild(TaskCard(task, removeTask, null));
