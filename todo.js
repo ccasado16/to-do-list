@@ -6,13 +6,10 @@ const btnAddTask = document.getElementById("btn-add-task");
 const taskList = document.getElementById("task-list");
 const completedTasksList = document.getElementById("completed-tasks-list");
 
-const taskArray = [
-  { description: "Task 1", completed: false },
-  { description: "Task 2", completed: false },
-  { description: "Task 3", completed: false },
-];
+const taskArray = JSON.parse(localStorage.getItem("tasks")) || [];
 
-const completedTasksArray = [{ description: "Task 4", completed: true }];
+const completedTasksArray =
+  JSON.parse(localStorage.getItem("completedTasks")) || [];
 
 const addTask = () => {
   if (!taskInput.value) {
@@ -28,6 +25,8 @@ const addTask = () => {
   let task = new Task(taskInput.value);
   taskArray.push(task);
 
+  localStorage.setItem("tasks", JSON.stringify(taskArray));
+
   taskInput.value = "";
 
   renderTasks();
@@ -39,9 +38,15 @@ const removeTask = (task) => {
     ? taskArray.indexOf(task)
     : completedTasksArray.indexOf(task);
 
-  if (!task.completed) taskArray.splice(index, 1);
+  if (!task.completed) {
+    taskArray.splice(index, 1);
+    localStorage.setItem("tasks", JSON.stringify(taskArray));
+  }
 
-  if (task.completed) completedTasksArray.splice(index, 1);
+  if (task.completed) {
+    completedTasksArray.splice(index, 1);
+    localStorage.setItem("completedTasks", JSON.stringify(completedTasksArray));
+  }
 
   renderTasks();
 };
@@ -52,6 +57,9 @@ const completeTask = (task) => {
 
   // move to completedTasksArray
   completedTasksArray.unshift(taskArray.splice(index, 1)[0]);
+
+  localStorage.setItem("tasks", JSON.stringify(taskArray));
+  localStorage.setItem("completedTasks", JSON.stringify(completedTasksArray));
 
   renderTasks();
 };
